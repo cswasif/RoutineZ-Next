@@ -2,11 +2,12 @@
 name = "routinez"
 compatibility_date = "2023-12-01"
 
-# Pages configuration
 [build]
 command = "npm run build"
-# Next.js export outputs to 'out' directory when using output: 'export'
-output_directory = "out"
+# Next.js static export outputs to 'out' directory
+output_dir = "out"
 
-# For Cloudflare Pages, we don't need the site bucket or upload format
-# Remove the conflicting [site] and [build.upload] sections
+# Specify the build output directory for Pages
+[build.output]
+include = ["out/**/*"]
+pages_build_output_dir = "out"
