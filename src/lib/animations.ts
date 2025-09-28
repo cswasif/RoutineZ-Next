@@ -1,27 +1,24 @@
-import { type MotionProps } from 'framer-motion';
+import { type MotionProps, type Variants } from 'framer-motion';
 
-export const fadeIn: MotionProps = {
+export const fadeIn: Variants = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  exit: { opacity: 0 },
-  transition: { duration: 0.3 }
+  exit: { opacity: 0 }
 };
 
-export const slideIn: MotionProps = {
+export const slideIn: Variants = {
   initial: { x: -20, opacity: 0 },
   animate: { x: 0, opacity: 1 },
-  exit: { x: 20, opacity: 0 },
-  transition: { duration: 0.3 }
+  exit: { x: 20, opacity: 0 }
 };
 
-export const scaleIn: MotionProps = {
+export const scaleIn: Variants = {
   initial: { scale: 0.95, opacity: 0 },
   animate: { scale: 1, opacity: 1 },
-  exit: { scale: 0.95, opacity: 0 },
-  transition: { duration: 0.3 }
+  exit: { scale: 0.95, opacity: 0 }
 };
 
-export const staggerChildren = {
+export const staggerChildren: Variants = {
   initial: { opacity: 0 },
   animate: {
     opacity: 1,

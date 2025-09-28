@@ -47,7 +47,9 @@ export default function GeneratorPage() {
     // Schedule notifications for upcoming classes
     if (notifications) {
       classes.forEach(classItem => {
-        const [hours, minutes] = classItem.time.replace(' AM', '').replace(' PM', '').split(':').map(Number);
+        const timeParts = classItem.time.replace(' AM', '').replace(' PM', '').split(':');
+        const hours = Number(timeParts[0]) || 0;
+        const minutes = Number(timeParts[1]) || 0;
         const isPM = classItem.time.includes('PM');
         const notificationTime = new Date();
         notificationTime.setHours(isPM ? hours + 12 : hours, minutes - 30); // 30 minutes before class
@@ -132,11 +134,13 @@ export default function GeneratorPage() {
       <motion.div
         className="bg-gradient-to-b from-primary/10 to-background pt-20 pb-32"
         variants={fadeIn}
+        transition={{ duration: 0.3 }}
       >
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-3xl mx-auto text-center"
             variants={slideIn}
+            transition={{ duration: 0.3 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Schedule your classes with ease
@@ -166,7 +170,9 @@ export default function GeneratorPage() {
           <MotionCard
             className="p-6 bg-card shadow-xl"
             variants={scaleIn}
-            {...cardHover}
+            whileHover={cardHover.whileHover}
+            whileTap={cardHover.whileTap}
+            transition={{ duration: 0.3 }}
           >
             <div className="flex items-center gap-4 mb-6">
               <Globe className="w-6 h-6 text-primary" />
@@ -201,7 +207,9 @@ export default function GeneratorPage() {
           <MotionCard
             className="p-6 bg-card shadow-xl"
             variants={scaleIn}
-            {...cardHover}
+            whileHover={cardHover.whileHover}
+            whileTap={cardHover.whileTap}
+            transition={{ duration: 0.3 }}
           >
             <div className="flex items-center gap-4 mb-6">
               <Clock className="w-6 h-6 text-primary" />
@@ -213,7 +221,7 @@ export default function GeneratorPage() {
                 <div className="flex items-center gap-4 mt-2">
                   <Slider
                     value={[dailyLimit]}
-                    onValueChange={(value) => setDailyLimit(value[0])}
+                    onValueChange={(value) => setDailyLimit(value?.[0] ?? 8)}
                     max={12}
                     step={1}
                     className="flex-1"
@@ -226,7 +234,7 @@ export default function GeneratorPage() {
                 <div className="flex items-center gap-4 mt-2">
                   <Slider
                     value={[bufferTime]}
-                    onValueChange={(value) => setBufferTime(value[0])}
+                    onValueChange={(value) => setBufferTime(value?.[0] ?? 15)}
                     max={60}
                     step={5}
                     className="flex-1"
@@ -241,7 +249,9 @@ export default function GeneratorPage() {
           <MotionCard
             className="p-6 bg-card shadow-xl"
             variants={scaleIn}
-            {...cardHover}
+            whileHover={cardHover.whileHover}
+            whileTap={cardHover.whileTap}
+            transition={{ duration: 0.3 }}
           >
             <div className="flex items-center gap-4 mb-6">
               <Bell className="w-6 h-6 text-primary" />
@@ -292,7 +302,9 @@ export default function GeneratorPage() {
         <MotionCard
           className="mt-8 p-6 bg-card shadow-xl"
           variants={scaleIn}
-          {...cardHover}
+          whileHover={cardHover.whileHover}
+          whileTap={cardHover.whileTap}
+          transition={{ duration: 0.3 }}
         >
           <div className="flex items-center gap-4 mb-6">
             <CalendarIcon className="w-6 h-6 text-primary" />
