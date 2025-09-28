@@ -36,8 +36,8 @@ const nextConfig = {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
   },
-  // Cloudflare specific configuration
-  output: 'standalone',
+  // Cloudflare specific configuration - Use static export for Pages
+  output: 'export',
   // Disable webpack persistent caching to avoid large cache files
   webpack: (config, { isServer }) => {
     // Disable persistent caching

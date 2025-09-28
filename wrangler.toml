@@ -1,22 +1,12 @@
-name = "routinez-frontend"
+# Cloudflare Pages configuration
+name = "routinez"
 compatibility_date = "2023-12-01"
-compatibility_flags = ["nodejs_compat"]
 
+# Pages configuration
 [build]
 command = "npm run build"
-output_directory = ".next"
+# Next.js export outputs to 'out' directory when using output: 'export'
+output_directory = "out"
 
-[site]
-bucket = ".next"
-
-[env.production]
-name = "routinez-frontend-production"
-route = ""
-
-[env.staging]
-name = "routinez-frontend-staging"
-route = ""
-
-# Enable the Pages Functions API to use functions and middlewares
-[build.upload]
-format = "service-worker"
+# For Cloudflare Pages, we don't need the site bucket or upload format
+# Remove the conflicting [site] and [build.upload] sections
