@@ -2,12 +2,8 @@
 name = "routinez"
 compatibility_date = "2023-12-01"
 
+# Cloudflare Pages specific configuration
+pages_build_output_dir = "out"
+
 [build]
 command = "npm run build"
-# Next.js static export outputs to 'out' directory
-output_dir = "out"
-
-# Specify the build output directory for Pages
-[build.output]
-include = ["out/**/*"]
-pages_build_output_dir = "out"
