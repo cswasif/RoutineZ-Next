@@ -47,7 +47,7 @@ export default function GeneratorPage() {
     // Schedule notifications for upcoming classes
     if (notifications) {
       classes.forEach(classItem => {
-        const [hours, minutes] = classItem.time.replace(' AM', '').replace(' PM').split(':').map(Number);
+        const [hours, minutes] = classItem.time.replace(' AM', '').replace(' PM', '').split(':').map(Number);
         const isPM = classItem.time.includes('PM');
         const notificationTime = new Date();
         notificationTime.setHours(isPM ? hours + 12 : hours, minutes - 30); // 30 minutes before class
