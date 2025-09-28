@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "build": "npm run clean && next build",
-    "clean": "if exist .next rmdir /s /q .next & if exist .cache rmdir /s /q .cache",
+    "clean": "node -e \"const fs=require('fs'); const path=require('path'); ['.next','.cache'].forEach(dir=>{if(fs.existsSync(dir)){fs.rmSync(dir,{recursive:true,force:true})}})\"",
     "start": "next start",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit",
