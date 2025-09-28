@@ -1,0 +1,10 @@
+# Ignore artifacts:
+build
+coverage
+.next
+*.log
+node_modules
+.DS_Store
+*.local
+.env*.local
+dist

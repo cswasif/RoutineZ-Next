@@ -1,0 +1,22 @@
+name = "routinez-frontend"
+compatibility_date = "2023-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "npm run build"
+output_directory = ".next"
+
+[site]
+bucket = ".next"
+
+[env.production]
+name = "routinez-frontend-production"
+route = ""
+
+[env.staging]
+name = "routinez-frontend-staging"
+route = ""
+
+# Enable the Pages Functions API to use functions and middlewares
+[build.upload]
+format = "service-worker"
